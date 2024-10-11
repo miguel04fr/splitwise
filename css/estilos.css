@@ -1,0 +1,17 @@
+.espacio{
+    margin-top: 5px;
+}
+
+#btnForm{
+    width: 100%;
+    height: 30px;
+    border: 1px solid gray;
+    border-radius: 10px;
+    align-content: center;
+    text-align: center;
+}
+
+#btnForm:hover{
+    background-color: gray;
+    color: white;
+}
