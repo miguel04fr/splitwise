@@ -136,7 +136,7 @@ class Gasto {
 
 // MANEJADOR DOMCONTENTLOADED
 
-  const cuentaContainer = document.getElementById("cuenta"); // OBTENER CONTAINER CUENTA
+  
 
   // FUNCION PARA CALCULAR Y MOSTRAR DEUDAS EQUITATIVAS EN "CUENTA"
   function calcularDeudasEquitativas() {
@@ -164,7 +164,12 @@ class Gasto {
   // (CONTINÚAN TUS OTRAS FUNCIONES: VALIDAR CAMPOS, ASIGNAR VALOR AL OBJETO, CREAR RESUMEN DE USUARIO, ETC.)
 
 
-// FUNCION PARA VALIDAR CAMPOS
+// Función para cambiar el estilo del borde de un elemento
+function cambiarEstiloBorde(elemento, color) {
+  elemento.style.borderColor = color; // Cambia el color del borde del elemento
+}
+
+// Función de validación de campos
 function validarCampos(usuarioSeleccionado) {
   // VERIFICAR QUE SE HA SELECCIONADO UN USUARIO
   if (usuarioSeleccionado === "") {
@@ -173,39 +178,40 @@ function validarCampos(usuarioSeleccionado) {
   }
 
   // VERIFICAR QUE TODOS LOS CAMPOS ESTAN COMPLETOS
-  if (inputTitulo.value == "" || inputImporte.value == "" || inputFecha.value == "") {
+  if (inputTitulo.value === "" || inputImporte.value === "" || inputFecha.value === "") {
     alert("Por favor, rellene todos los campos"); // ALERTA DE CAMPOS VACIOS
   } else {
     let contador = 0; // INICIALIZAR CONTADOR
 
     // VALIDAR CAMPO DEL TITULO DEL GASTO
     if (tituloExpresion.test(inputTitulo.value)) {
-      inputTitulo.style.borderColor = "green"; // CAMBIO DE COLOR SI ES VALIDO
+      cambiarEstiloBorde(inputTitulo, "green"); // Cambia el estilo del borde a verde
       contador++; // INCREMENTAR CONTADOR
     } else {
-      inputTitulo.style.borderColor = "red"; // CAMBIO DE COLOR SI NO ES VALIDO
+      cambiarEstiloBorde(inputTitulo, "red"); // Cambia el estilo del borde a rojo
     }
 
     // VALIDAR CAMPO DEL IMPORTE
     if (importeExpresion.test(inputImporte.value)) {
-      inputImporte.style.borderColor = "green"; // CAMBIO DE COLOR SI ES VALIDO
+      cambiarEstiloBorde(inputImporte, "green"); // Cambia el estilo del borde a verde
       contador++; // INCREMENTAR CONTADOR
     } else {
-      inputImporte.style.borderColor = "red"; // CAMBIO DE COLOR SI NO ES VALIDO
+      cambiarEstiloBorde(inputImporte, "red"); // Cambia el estilo del borde a rojo
     }
 
     // VALIDAR CAMPO DE LA FECHA
     if (fechaExpresion.test(inputFecha.value)) {
-      inputFecha.style.borderColor = "green"; // CAMBIO DE COLOR SI ES VALIDO
+      cambiarEstiloBorde(inputFecha, "green"); // Cambia el estilo del borde a verde
       contador++; // INCREMENTAR CONTADOR
     } else {
-      inputFecha.style.borderColor = "red"; // CAMBIO DE COLOR SI NO ES VALIDO
+      cambiarEstiloBorde(inputFecha, "red"); // Cambia el estilo del borde a rojo
     }
 
     // ASIGNAR VALOR AL OBJETO SI TODAS LAS VALIDACIONES SON CORRECTAS (CONTADOR == 3)
     asignarValorAlObjeto(contador, usuarioSeleccionado); // PASAR CONTADOR Y USUARIO SELECCIONADO
   }
 }
+
 
 // FUNCION PARA ASIGNAR VALORES AL OBJETO
 function asignarValorAlObjeto(contador, usuarioSeleccionado) {
